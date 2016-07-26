@@ -84,6 +84,10 @@
       <Project>{8b944f12-82bd-46ee-aca8-76f678c7c994}</Project>
       <Name>MNISTDataLoader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NeuralNetwork\NeuralNetwork.csproj">
+      <Project>{0a2cf9bc-8794-4c74-84f7-25938f248f3f}</Project>
+      <Name>NeuralNetwork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

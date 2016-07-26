@@ -45,9 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INeuronFunction.cs" />
+    <Compile Include="NablaTupple.cs" />
+    <Compile Include="Protocols\INeuronFunction.cs" />
+    <Compile Include="Protocols\IVectorConverter.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VectorInputFormat.cs" />
+    <Compile Include="VectorConverter.cs" />
     <Compile Include="SigmoidNeuronFunction.cs" />
   </ItemGroup>
   <ItemGroup>

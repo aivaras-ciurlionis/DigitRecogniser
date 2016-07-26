@@ -1,4 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Complex;
 using NeuralNetwork.Protocols;
 
 namespace NeuralNetwork
@@ -6,15 +7,16 @@ namespace NeuralNetwork
     internal class SigmoidNeuronFunction : INeuronFunction
     {
 
-        public Vector<double> NeuronFunctionValue(Vector<double> input)
+        public Matrix<double> NeuronFunctionValue(Matrix<double> input)
         {
-            return 1/(1 + input.PointwiseExp());
+            var i = -input;
+            return 1/(1 + i.PointwiseExp());
         }
 
-        public double NeuronFunctionDerivativeValue(Vector<double> input)
+        public Matrix<double> NeuronFunctionDerivativeValue(Matrix<double> input)
         {
             var functionValue = NeuronFunctionValue(input);
-            return functionValue * (1- functionValue);
+            return  functionValue.PointwiseMultiply(1 - functionValue);
         }
     }
 }

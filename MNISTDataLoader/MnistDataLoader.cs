@@ -16,24 +16,28 @@ namespace MNISTDataLoader
             _dataLocation = dataLocation;
         }
 
-        public IEnumerable<IEnumerable<int>> GetTestImages()
+        public IEnumerable<IEnumerable<double>> GetTestImages(int? count)
         {
             var testImageLoader = new ImagesLoader(_dataLocation + "/" + TestImagesFileName);
-            return testImageLoader.GetImages();
+            return testImageLoader.GetImages(count);
         }
 
-        public IEnumerable<int> GetTestLabels()
+        public IEnumerable<int> GetTestLabels(int? count)
         {
             var testLabelLoader = new LabelLoader(_dataLocation + "/" + TestLabelsFileName);
-            return testLabelLoader.GetLabels();
+            return testLabelLoader.GetLabels(count);
         }
 
-        public void GetData()
+        public IEnumerable<IEnumerable<double>> GetTrainImages(int? count)
         {
-         
-            var trainingLabelLoader = new LabelLoader(_dataLocation + "/" + TrainLabelsFileName);
             var trainingImageLoader = new ImagesLoader(_dataLocation + "/" + TrainImagesFileName);
-            var trainLabels = trainingLabelLoader.GetLabels();
+            return trainingImageLoader.GetImages(count);
+        }
+
+        public IEnumerable<int> GetTrainLabels(int? count)
+        {
+            var trainingLabelLoader = new LabelLoader(_dataLocation + "/" + TrainLabelsFileName);
+            return trainingLabelLoader.GetLabels(count);
         }
 
     }

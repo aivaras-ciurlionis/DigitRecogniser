@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace MNISTDataLoader
 {
@@ -14,7 +15,7 @@ namespace MNISTDataLoader
             _binaryReader = new BinaryReader(labelFile);
         }
 
-        public IEnumerable<int> GetLabels()
+        public IEnumerable<int> GetLabels(int? count)
         {
             var labels = new List<int>();
             _binaryReader.ReadInt32(); // Skip magic number
@@ -23,7 +24,7 @@ namespace MNISTDataLoader
             {
                 labels.Add(_binaryReader.ReadByte());
             }
-            return labels;
+            return labels.Take(count??setSize);
         }
 
         public void Dispose()
