@@ -31,7 +31,7 @@ namespace MNISTDataLoader
             {
                 var singleImageBytes = _binaryReader.ReadBytes(rowsCount * columnCount);
                 var ii = GetImagePixels(singleImageBytes);
-                var x = ii.Select(ints => 1.0 - (double)ints / 255).ToList();
+                var x = ii.Select(ints => (double)ints / 255).ToList();
                 images.Add(x);
             }
             return images.Take(count ?? imagesCount);

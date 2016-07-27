@@ -12,7 +12,7 @@ namespace TrainResultsViewer
     class TrainResultsView
     {
         private const int TestCount = 10000;
-        private const int TrainCount = 10000;
+        private const int TrainCount = 50000;
 
         private IEnumerable<IEnumerable<double>> _testImages;
         private IEnumerable<IEnumerable<double>> _trainImages;
@@ -28,13 +28,13 @@ namespace TrainResultsViewer
         private void CreateNetwork()
         {
             _network = new NeuralNetwork.NeuralNetwork(new List<int> { 28 * 28, 30, 10 });
-            _network.SetMagicParameters(10, 0.75);
+            _network.SetMagicParameters(10, 3);
         }
 
         private void LoadAndPrepareData()
         {
             var loader = new MNISTDataLoader.MnistDataLoader(AppDomain.CurrentDomain.BaseDirectory + "/Data");
-
+            
 
             _testImages = loader.GetTestImages(TestCount);
             Console.WriteLine("Loaded test images");
@@ -75,30 +75,15 @@ namespace TrainResultsViewer
             Console.WriteLine();
         }
 
-        public void Test()
-        {
-            double[,] x = {
-                { 0.5},
-                { 0.25},
-                { 0.1 }
-            };
-            var matrix = Matrix<double>.Build.DenseOfArray(x);
-            var r1 = _network.NeuronFunction.NeuronFunctionValue(matrix);
-            Console.WriteLine(r1);
-
-            
-            var r2 = _network.NeuronFunction.NeuronFunctionDerivativeValue(matrix);
-            Console.WriteLine(r2);
-        }
 
         private void ExecuteTraining()
-        {// Create new stopwatch.
+        {
           
             for (var i = 0; i < 200; i++)
             {
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
-                string delim = new string('-', 100);
+                var delim = new string('-', 100);
                 Console.WriteLine(delim);
                 ExecuteEpoch(i + 1);
                 stopwatch.Stop();

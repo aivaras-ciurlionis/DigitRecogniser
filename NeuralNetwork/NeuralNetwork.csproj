@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NablaTupple.cs" />
+    <Compile Include="PairOfMatrices.cs" />
     <Compile Include="Protocols\INeuronFunction.cs" />
     <Compile Include="Protocols\IVectorConverter.cs" />
     <Compile Include="NeuralNetwork.cs" />

@@ -4,7 +4,7 @@ namespace NeuralNetwork.Protocols
 {
     public interface INeuronFunction
     {
-        Matrix<double> NeuronFunctionValue(Matrix<double> input);
-        Matrix<double> NeuronFunctionDerivativeValue(Matrix<double> input);
+        Vector<double> NeuronFunctionValue(Vector<double> input);
+        Vector<double> NeuronFunctionDerivativeValue(Vector<double> input);
     }
 }
